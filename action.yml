@@ -1,0 +1,37 @@
+name: 'Rules checker'
+description: 'Check log and template type in any issues'
+author: 'gottardo.stefano.83@gmail.com'
+branding:
+  icon: alert-circle
+  color: red
+inputs:
+  github-token:
+    required: true
+    description: 'Your GitHub token'
+  log-section-start-text:
+    required: true
+    description: 'The part of text where to start the log search (case sensitive)'
+  log-section-end-text:
+    required: true
+    description: 'The part of text where to end the log search (case sensitive)'
+  log-miss-label-text:
+    required: false
+    description: 'The text of the label to be applied to any issues that do not have a log attached'
+  log-miss-comment-text:
+    required: true
+    description: 'The text of the comment to be add to any issues that do not have a log attached'
+  generic-label-text:
+    required: false
+    description: 'The text of the label to be applied to any issues that was made with an unknown template'
+  generic-comment-text:
+    required: true
+    description: 'The text of the comment to be add to any issues that was made with an unknown template'
+  triage-needed-label:
+    required: false
+    description: 'If set, when a any Issue of BUG template have a log attached will apply a "triage needed" label'
+outputs:
+  results:
+      description: 'No output yet'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

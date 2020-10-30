@@ -1,0 +1,24 @@
+name: 'Rules checker'
+on:
+  issues:
+    types:
+      - opened
+jobs:
+  rules-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        name: "Run Rules checker"
+        with:
+          github-token: ${{ secrets.GITHUBTOKEN }}
+          log-miss-label-text: "Ignored rules"
+          log-section-start-text: "### Debug log"
+          log-section-end-text: "### Additional context or screenshots (if appropriate)"
+          log-miss-comment-text: |
+            Hey boy you forgot to attach the log
+            Please fix it
+          generic-comment-text: |
+            Hey boy you have not studied your homework
+            Now you will take the exam
+          triage-needed-label: "Triage: Needed"
