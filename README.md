@@ -1,7 +1,7 @@
 # Action Rules checker
 
-[![release][release-badge]][release]
-[![license][license-badge]][license]
+[![GitHub release](https://img.shields.io/github/release/castagnait/action_rules_checker.svg)](https://github.com/castagnait/action_rules_checker/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This is a GitHub action to check some rules in any issues that are opened or edited.
 
