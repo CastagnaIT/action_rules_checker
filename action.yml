@@ -29,6 +29,9 @@ inputs:
   triage-needed-label:
     required: false
     description: 'If set, when a any Issue of BUG template have a log attached will apply a "triage needed" label'
+  feature-label-text:
+    required: false
+    description: 'If set, when a any Issue is of FEATURE REQUEST template will apply this label'
 outputs:
   results:
       description: 'No output yet'

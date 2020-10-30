@@ -36,6 +36,7 @@ async function run(): Promise<void> {
     let notifyForLog: Boolean = false
     let notifyForGenericRules: Boolean = false
     let notifyTriageNeeded: Boolean = false
+    let notifyFeatureRequest: Boolean = false
 
     if (bodyText == null || bodyText.length == 0) {
       // The body content is null, undefined or empty
@@ -59,7 +60,7 @@ async function run(): Promise<void> {
           }
           break
         case helper.issueTypes.FEATURE:
-          // Do nothing
+          notifyFeatureRequest = true
           break
         case helper.issueTypes.HELP:
           // Do nothing
@@ -117,6 +118,15 @@ async function run(): Promise<void> {
       })
     }
 
+    if (notifyFeatureRequest) {
+      let labelText = core.getInput('feature-label-text', {required: false})
+      client.issues.addLabels({
+        labels: [labelText],
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        issue_number: issueNumber
+      })
+    }
   } catch (error) {
     console.error(error)
     core.setFailed(error.message)

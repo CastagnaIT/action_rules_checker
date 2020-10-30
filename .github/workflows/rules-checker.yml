@@ -22,3 +22,4 @@ jobs:
             Hey boy you have not studied your homework
             Now you will take the exam
           triage-needed-label: "Triage: Needed"
+          feature-label-text: "Enhancement"
