@@ -657,6 +657,7 @@ function run() {
             let notifyForLog = false;
             let notifyForGenericRules = false;
             let notifyTriageNeeded = false;
+            let notifyFeatureRequest = false;
             if (bodyText == null || bodyText.length == 0) {
                 // The body content is null, undefined or empty
                 notifyForGenericRules = true;
@@ -681,7 +682,7 @@ function run() {
                         }
                         break;
                     case helper.issueTypes.FEATURE:
-                        // Do nothing
+                        notifyFeatureRequest = true;
                         break;
                     case helper.issueTypes.HELP:
                         // Do nothing
@@ -728,6 +729,15 @@ function run() {
                 let commentText = core.getInput('generic-comment-text', { required: true });
                 client.issues.createComment({
                     body: commentText,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issueNumber
+                });
+            }
+            if (notifyFeatureRequest) {
+                let labelText = core.getInput('feature-label-text', { required: false });
+                client.issues.addLabels({
+                    labels: [labelText],
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     issue_number: issueNumber
