@@ -42,7 +42,7 @@ async function run(): Promise<void> {
       notifyForGenericRules = true
     } else {
       // Remove markdown comments from body text
-      bodyText = bodyText.replace(/<!--[^<>]*-->/g, "")
+      bodyText = bodyText.replace(/<!--[\r\n\w\W]*?-->/g, "")
       let issueType: string = helper.detectIssueType(bodyText)
       console.info(`Detected Issue with template of type: ${issueType}\n`)
       console.info('------------------------------------------------------\n')
