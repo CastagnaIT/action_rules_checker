@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./
+      - uses: CastagnaIT/action_rules_checker@test
         name: "Run Rules checker"
         with:
           github-token: ${{ secrets.GITHUBTOKEN }}
