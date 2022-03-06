@@ -27,7 +27,7 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
-    "@types/node-fetch": "^2.5.7",
+    "@types/node-fetch": "^2.6.1",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
